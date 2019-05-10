@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameRenderer gameRenderer;
+    private Player player;
+    private House house;
+
     void Start()
     {
+        gameRenderer = GameObject.Find("GameRenderer").GetComponent<GameRenderer>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+        house = GameObject.Find("House").GetComponent<House>();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public Room SetPlayer(int numberOfRoom)
     {
-        
+        Room room = house.GetSelectedRoom(0);
+        gameRenderer.SetPlayer(room);
+        room.AddPerson(player.gameObject);
+        return room;
     }
+
+    public void MakePlayerTurn(Room startRoom, Room finishRoom)
+    {
+        startRoom.RemovePerson(player.gameObject);
+        gameRenderer.RenderPlayerMove(startRoom, finishRoom);
+        player.SetCurrentRoom(finishRoom);
+        finishRoom.AddPerson(player.gameObject);
+    }
+
+    public void PlayerHasEndedTurn()
+    {
+    }
+
 }
