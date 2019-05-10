@@ -60,4 +60,9 @@ public class Room : MonoBehaviour
     {
         personsInRoom.Remove(person);
     }
+
+    public int GetCountOfPersons()
+    {
+        return personsInRoom.Count;
+    }
 }

@@ -22,12 +22,33 @@ public class GameRenderer : MonoBehaviour
         player.transform.position = centerOfRoom;
         
     }
+
     public void RenderPlayerMove(Room startRoom, Room finishRoom)
     {
         Vector3 centerOfFinishRoom = finishRoom.transform.position;
         centerOfFinishRoom.z = -2;
         player.transform.position = centerOfFinishRoom;
-        
     }
 
+    public void SetGirl(Girl girl, Room room)
+    {
+        Vector3 centerOfRoom = room.transform.position;
+        centerOfRoom.z = -1;
+        switch (room.GetCountOfPersons())
+        {
+            case 1:
+                centerOfRoom.x -= 0.6f;
+                break;
+            case 2:
+                centerOfRoom.x += 0.6f;
+                break;
+            case 3:
+                centerOfRoom.y -= 0.6f;
+                break;
+            case 4:
+                centerOfRoom.y += 0.6f;
+                break;
+        }
+        girl.transform.position = centerOfRoom;
+    }
 }

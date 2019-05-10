@@ -32,6 +32,24 @@ public class GameController : MonoBehaviour
         finishRoom.AddPerson(player.gameObject);
     }
 
+    public Room SetGirl(Girl girl)
+    {
+        Room selectedRoom = null;
+        
+        for(int i = 0; i< 5; i++)
+        {
+            int numberOfRoom = UnityEngine.Random.Range(0, 6);
+            selectedRoom = house.GetSelectedRoom(numberOfRoom);
+            if(selectedRoom.GetCountOfPersons() < 5)
+            {
+                break;
+            }
+        }
+        gameRenderer.SetGirl(girl, selectedRoom);
+        selectedRoom.AddPerson(girl.gameObject);
+        return selectedRoom;
+    }
+
     public void PlayerHasEndedTurn()
     {
     }
