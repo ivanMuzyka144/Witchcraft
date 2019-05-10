@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GameRenderer : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameController gameController;
+    private Player player;
+    private House house;
+
     void Start()
     {
-        
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+        house = GameObject.Find("House").GetComponent<House>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetPlayer(Room room)
     {
+        Vector3 centerOfRoom = room.transform.position;
+        centerOfRoom.z = -2;
+        player.transform.position = centerOfRoom;
         
     }
 }

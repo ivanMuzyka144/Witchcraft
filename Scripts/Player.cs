@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+    private GameController gameController;
+
+    private Room currentRoom;
+
     void Start()
     {
-        
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        currentRoom = gameController.SetPlayer(0);
     }
+    
 
-    // Update is called once per frame
     void Update()
     {
         

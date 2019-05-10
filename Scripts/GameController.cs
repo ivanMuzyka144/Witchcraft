@@ -13,8 +13,14 @@ public class GameController : MonoBehaviour
         gameRenderer = GameObject.Find("GameRenderer").GetComponent<GameRenderer>();
         player = GameObject.Find("Player").GetComponent<Player>();
         house = GameObject.Find("House").GetComponent<House>();
-
-        house.BuildHouse();
+        
     }
-    
+
+    public Room SetPlayer(int numberOfRoom)
+    {
+        Room room = house.GetSelectedRoom(0);
+        gameRenderer.SetPlayer(room);
+        return room;
+    }
+
 }
