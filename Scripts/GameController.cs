@@ -23,4 +23,14 @@ public class GameController : MonoBehaviour
         return room;
     }
 
+    public void MakePlayerTurn(Room startRoom, Room finishRoom)
+    {
+        gameRenderer.RenderPlayerMove(startRoom, finishRoom);
+        player.SetCurrentRoom(finishRoom);
+    }
+
+    public void PlayerHasEndedTurn()
+    {
+    }
+
 }

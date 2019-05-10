@@ -23,4 +23,29 @@ public class Room : MonoBehaviour
         this.rightRoom = rightRoom;
         this.bottomRoom = bottomRoom;
     }
+
+
+    public bool HasRoom(string command)
+    {
+        switch (command)
+        {
+            case "w": return this.topRoom != null;
+            case "a": return this.leftRoom != null;
+            case "s": return this.bottomRoom != null;
+            case "d": return this.rightRoom != null;
+            default: return false;
+        }
+    }
+
+    public Room GetRoom(string command)
+    {
+        switch (command)
+        {
+            case "w": return this.topRoom;
+            case "a": return this.leftRoom;
+            case "s": return this.bottomRoom;
+            case "d": return this.rightRoom;
+            default: return null;
+        }
+    }
 }

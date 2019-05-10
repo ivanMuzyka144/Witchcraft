@@ -22,4 +22,12 @@ public class GameRenderer : MonoBehaviour
         player.transform.position = centerOfRoom;
         
     }
+    public void RenderPlayerMove(Room startRoom, Room finishRoom)
+    {
+        Vector3 centerOfFinishRoom = finishRoom.transform.position;
+        centerOfFinishRoom.z = -2;
+        player.transform.position = centerOfFinishRoom;
+        
+    }
+
 }
