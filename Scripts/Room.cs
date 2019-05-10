@@ -10,6 +10,8 @@ public class Room : MonoBehaviour
     private Room rightRoom;
     private Room bottomRoom;
 
+    private List<GameObject> personsInRoom = new List<GameObject>();
+
 
     public void SetRoomPosition(int x, int y)
     {
@@ -47,5 +49,15 @@ public class Room : MonoBehaviour
             case "d": return this.rightRoom;
             default: return null;
         }
+    }
+
+    public void AddPerson(GameObject person)
+    {
+        personsInRoom.Add(person);
+    }
+
+    public void RemovePerson(GameObject person)
+    {
+        personsInRoom.Remove(person);
     }
 }
